@@ -64,7 +64,7 @@ Para comenzar, necesitaremos Node installadol, además de Mocha y otro módulo l
 ```
 $ brew install node
 ```
-Si estás en Linux, entonces puedes usar tu package manager del sistema(como `apt-get` o `yum`) para instalar Node.[[3]](#footnote-3)
+Si estás en Linux, entonces puedes usar tu package manager del sistema(como `apt-get` o `yum`) para instalar Node.<a name="reference-3"></a>[[3]](#footnote-3)
 
 Y si estas usando Windows, entonces te recomiendo visitar la página de Node, y descargar el instalador. 
 
@@ -407,13 +407,16 @@ Por ahora debe tener una sensación de los pasos básicos de TDD: Rojo, verde y 
 
 
 <a name="footnote-2"></a>
+
 2. Si, sé que estás pensando, "volver a correr los test no garantiza que no has introducido nuevos bugs". Eso es correcto. Pero volver a correr los test revisan errores de regresión y es mucho mejor que probar nada. Y si mis test comprehensibles pasan entonces puedo tener cierto nivel de confianza en que la lógica principal de negocio aún funciona. [↩](#reference-2)
 
 
  <a name="footnote-3"></a>
+ 
  3. And let’s face it, if you’re using Linux and reading this article, you probably have Node installed already.[↩](#reference-3)
 
  <a name="footnote-4"></a>
+
  4. Ver el siguiente artículo sobre cómo manejar llamadas de red. [↩](#reference-4)
 
 [happy-nyan-cat]: http://jrsinclair.com/assets/1-passing-test.png

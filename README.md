@@ -99,14 +99,14 @@ Como es probable que use jQuery para hacer los request HTTP  al servidr, parece 
 
 Con esto en mente, crearé cuatro archivo para darle hogar a mi código. 
 
-1. `flicker-fetcher.js` para el módigo que obtiene la data y la transforma;
+1. `flickr-fetcher.js` para el módigo que obtiene la data y la transforma;
 2. `photo-lister.js` para el módulo que toma la lista, la convierte en HTML y agrega a la página. 
-3. `flicker-fetcher-spec.js` para el código que probará `flicker-fetcher.js`; y 
+3. `flickr-fetcher-spec.js` para el código que probará `flickr-fetcher.js`; y 
 4. `photo-lister-spec.js` para el código que probará `photo-lister.js`. 
 
 ### Escribiendo las pruebas
 
-Con los archivos en su lugar puedo comenzar a pensar en escribir mi *primer test*. Ahora, quiero escribir el test más simple posible que igual movera mi código base hacia adelante. Algo útil de hacer a este punto es probar que puedo cargar el módiglo. En `flicker-fetcher-spec.js` escribo: 
+Con los archivos en su lugar puedo comenzar a pensar en escribir mi *primer test*. Ahora, quiero escribir el test más simple posible que igual movera mi código base hacia adelante. Algo útil de hacer a este punto es probar que puedo cargar el módiglo. En `flickr-fetcher-spec.js` escribo: 
 
 ```JavaScript
 // flickr-fetcher-spec.js
@@ -258,7 +258,7 @@ FlickrFetcher = {
 
 Corremos los tests de nuevo -gato faliz. Tengo una función funcionando. 
 
-Estamos de regreso al paso de refactor. Ahora, este código es aún bastante simple, pero todos esos signos de suma lucen un poco feos para mi. Una manera de no tenerlos es usar una librería de templating (como Handlbars o [algo más simple]http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), pero no parece agregar valor el código extra a esta función. Podría intetar otra cosa. Si pongo todas las partes de la cadena en un arreglo, puedo pegar todo con el método `join()`. Como valor agregado, la mayoría de implemetaciones de JavaScript correran el joun siempre un poco más rápido que la concatenación con +. Así que refactorizo usando `join()`:
+Estamos de regreso al paso de refactor. Ahora, este código es aún bastante simple, pero todos esos signos de suma lucen un poco feos para mi. Una manera de no tenerlos es usar una librería de templating (como Handlbars o [algo más simple](http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), pero no parece agregar valor el código extra a esta función. Podría intetar otra cosa. Si pongo todas las partes de la cadena en un arreglo, puedo pegar todo con el método `join()`. Como valor agregado, la mayoría de implementaciones de JavaScript correran el join siempre un poco más rápido que la concatenación con +. Así que refactorizo usando `join()`:
 
 ```JavaScript 
 FlickrFetcher = {
@@ -282,7 +282,7 @@ A este punto, si quiero escribir un módulo para ser publicado en [npm](https://
 - ¿Qué debería pasar si alguien pasa un objeto con los nombres d elas propuedades errados?
 - ¿Qué debería pasar si alguien pasa un objeto con los nombres de propiedades correctos pero los valores no los strings?
 
-Todas estas son buenas preguntas que hacernos, y probar, pero no iré por ese camino aquí: Primero que nada porque sería increiblemente aburrido de leer, y segundo porque este es un proyecto de juevo que no es una misión crítica para nada. No estaré perdiendo el dinero de alguien o poniendo en riesgo la vida de alguien si este código no maneja los caso extremos con gracia. Por ahora, sé que hace lo que quiero que haga. Sin embargo, si estuviera escribiendo código de software de soporte vital o manejando los detalles de las tarjetas de crédit, o algo remotamente como eso, entonces definitivamente queremos responder todas esas preguntas. 
+Todas estas son buenas preguntas que hacernos, y probar, pero no iré por ese camino aquí: Primero que nada porque sería increíblemente aburrido de leer, y segundo porque este es un proyecto de juego que no es una misión crítica para nada. No estaré perdiendo el dinero de alguien o poniendo en riesgo la vida de alguien si este código no maneja los caso extremos con gracia. Por ahora, sé que hace lo que quiero que haga. Sin embargo, si estuviera escribiendo código de software de soporte vital o manejando los detalles de las tarjetas de crédito, o algo remotamente como eso, entonces definitivamente queremos responder todas esas preguntas. 
 
 Hemos ido a través de todo el ciclo con una función funcionando: _rojo, verde, refactor_. Ahora es momento de seleccionar el siguiente test. Momento de _pensar_. Quiero tomar la lista de objetos _photo_ que Flickr nos da y transformarlo en una lista de objetos en los que tengamos solo la información que quiero. Si voy a procesar la lista, entonces probablemente envuelva algún tipo de [operación map](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-arrays/#map), así que quiero crear una función que procese un objeto a la vez. Eso me da otra unidad de código bonita, pequeña, y testeable para probar. Así que escribo el siguiente código: 
 
@@ -312,8 +312,8 @@ describe('#transformPhotoObj()', function() {
 
 Cuando corremos el test, obtenemos un error ya que dicha función no existe: 
 
-![El gato estra triste porque la función no existe aún][sad-nyan-cat-2]
-El gato estra triste porque la función no existe aún
+![El gato esta triste porque la función no existe aún][sad-nyan-cat-2]
+El gato esta triste porque la función no existe aún
 
 Ahora que tenemos el gato triste (_rojo_), puedo escribir algo de código. ¿Cuál sería la forma más simple de pasar el test? Otra vez, solo crea una función que retorne el resultado esperado.
 

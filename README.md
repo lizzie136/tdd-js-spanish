@@ -428,3 +428,5 @@ Por ahora debe tener una sensación de los pasos básicos de TDD: Rojo, verde y 
 [sad-nyan-cat-4]:http://jrsinclair.com/assets/transformPhotoObj-failing.png
 
 [happy-nyan-cat-5]:http://jrsinclair.com/assets/3-passing-tests.png
+
+_Disclaimer: This is a translation from the original article of James Sinclair, A gentle introdución to JavaScript Test Driven Development. I don't own this article. It is property of their corresponding authors._

@@ -3,53 +3,53 @@
 
 _Este artículo originalmente fue publicado en Inglés por James Sinclair el 11 de Abril del 2016_
 
-Esta es la parte uno de una serie de tres partes donde explico en terminos generales mi acercamiento personal a Desarrollo Impulsado o dirigido por Pruebas (_Test driven development_ o TDD). Sobre el curso de esta serie, trabajaré el desarrollo de una aplicación completa (aunque una pequeña, simple) en JavaScript que envuelve hacer peticiones de red (también conocidas como AJAX) y manipulación de DOM. Las varias partes son las que siguen: 
+Esta es la parte uno de una serie de tres partes donde explico en términos generales mi acercamiento personal a Desarrollo Impulsado o dirigido por Pruebas (_Test driven development_ o TDD). Sobre el curso de esta serie, trabajaré el desarrollo de una aplicación completa (aunque una pequeña, simple) en JavaScript que involucra hacer peticiones de red (también conocidas como AJAX) y manipulación de DOM. Las varias partes son las que siguen: 
 
 * Parte 1: Comenzando con pruebas unitarias. 
 * Parte 2: Trabajando con peticiones de red en TDD.
 * Parte 3: Trabajando con DOM en TDD.
 
 ## ¿Por qué Test Driven Development?
-Comenzando con desarrollo dirigido por pruebas (TDD) puede ser intimidante. Suena tedioso, aburrido y complicado. La palabra 'prueba' conjura asocioaciones con exámenes y estrés y vigilantes y todo tipo de molestias. Y puede parecer un desperdicio escribir código que no _hace_ nada útil mas que decirte que el código que ya escribiste esta funcionando. Y encima de todo, hay un confusa colleción de frameworks y librerías ahi fuera. Algunas trabajan en el servidor, otras trabajan en el navegador, otras hacen las dos cosas... puede ser duro saber por donde empezar.
+Comenzar con desarrollo dirigido por pruebas (TDD) puede ser intimidante. Suena tedioso, aburrido y complicado. La palabra 'prueba' llama a pensar en exámenes y estrés y vigilantes y todo tipo de molestias. Y puede parecer un desperdicio escribir código que no _hace_ nada útil más all de decirte que el código que ya escribiste está funcionando. Y encima de todo, hay un confusa colección de frameworks y librerías ahí fuera. Algunas trabajan en el servidor, otras trabajan en el navegador, otras hacen las dos cosas... puede ser duro el sólo saber por donde empezar.
 
 ___
 
-> Las objeciones predecibles son "Escribir pruebas unitarias toma mucho tiempo, " o "¿Cómo escribo los test primero si no sé como que es lo que hace aún?" y entonces esta la excusa popular: "Las pruebas unitarias no atraparán todo los bugs". <a name="reference-1"></a>[[1]](#footnote-1)
+> Las objeciones predecibles son "Escribir pruebas unitarias toma mucho tiempo, " o "¿Cómo escribo los test primero si no sé como que es lo que hace aún?" y entonces esta la excusa popular: "Las pruebas unitarias no atraparán todos los bugs". <a name="reference-1"></a>[[1]](#footnote-1)
 
 
 Existen, sin embargo, muchas buenas razones para intentar TDD. Aquí tienes tres de las que creo importantes: 
 
-1. **Te fuerza a pensar**. Este es mas útil de lo que suena. Escribir una prueba me fuera a pensar claramente sobre qué es lo que estoy tratando de alcanzar, al punto de tener un nivel de detalle que la computadora pueda revisar. Una vez que tengo todo claro en mi cabeza, se vuelve mucho más sencillo escribir el código. Si estoy sufriendo por escribir una prueba, sé que no he entendido completamente el problema que estoy tratando de resolver. 
+1. **Te fuerza a pensar**. Esta razón es más útil de lo que suena. Escribir una prueba me fuerza a pensar claramente sobre qué es lo que estoy tratando de alcanzar, al punto de tener un nivel de detalle que la computadora pueda revisar. Una vez que tengo todo claro en mi cabeza, se vuelve mucho más sencillo escribir el código. Si estoy sufriendo por escribir una prueba, sé que no he entendido completamente el problema que estoy tratando de resolver. 
 
-2. **Hace el debugging más secillo**. Mientras TDD no causará que escribas menos bugs(tristemente), si hace un más sencillo hacerles seguimiento cuando aparezcan inevitablemente. Y si luego escribes un test relacionado al bug, me da más confanza saber que definitivamente he resuelto un bug en particular. Puedo re-correr todas mis otras pruebas para revisar que mi solución del bug no ha roto otros bits de código. <a name="reference-2"></a>[[2]](#footnote-2)
+2. **Hace el debugging más secillo**. Mientras TDD no causará que escribas menos bugs(tristemente), sí hace un más sencillo hacerles seguimiento cuando aparezcan inevitablemente. Y si luego escribes un test relacionado al bug, me da más confianza saber que definitivamente he resuelto un bug en particular. Puedo recorrer todas mis otras pruebas para revisar que mi solución del bug no ha roto otros bits de código. <a name="reference-2"></a>[[2]](#footnote-2)
 
-3. **Hace el codear mucho más divertido**. En mi mente, esta es la razón que pase más sobre las otras dos. Practicar los pasos simples de TDD is un poco adictivo y divertido. Toma un poco acostumbrarse a la disciplina de TDD, pero una vez que lo tomas, disfrutas más codear. 
+3. **Hace el codear mucho más divertido**. En mi mente, esta es la razón que pase más sobre las otras dos. Practicar los pasos simples de TDD es un poco adictivo y divertido. Toma un poco acostumbrarse a la disciplina de TDD, pero una vez que lo tomas, disfrutas más codear. 
 
-Estas son algunas de las razones para tomar TDD, pero con optimismo son suficientes para convencerte de intentarlo. En el momento empezaremos trabajando un ejemplo sencillo, pero antes, comenzemos con la líneas generales de cómo trabaja. 
+Estas son algunas de las razones para tomar TDD, pero soy optimista en que son suficientes para convencerte de intentarlo. En el momento empezaremos trabajando un ejemplo sencillo, pero antes, comenzemos con la líneas generales de cómo trabaja TDD. 
 
 
 ### ¿Qué es TDD?
 TDD es un enfoque para escribir software donde escribes las pruebas antes de escribir el código de la aplicación. Los pasos básicos son: 
 
-1. **Rojo**: Escribe un test y asegurate que falle. 
+1. **Rojo**: Escribe un test y asegúrate que falle. 
 2. **Verde**: Escribe el código más simple y fácil posible para hacer que el código pase. 
 3. **Refactor**: Optimiza y/o simplifica el código de la aplicación, asegurandote que los test aún pasen. 
 
 Una vez hemos terminado el paso 3, comenzamos el ciclo de nuevo escribiendo otro test. 
 
-Estos tres pasos forman el matra de TDD: 'rojo, verde, refactor'. Examinaremos cada uno de estos en detalle mientras vamos con un ejemplo. Pero primero, algo final. 
+Estos tres pasos forman el matra de TDD: 'rojo, verde, refactor'. Examinaremos cada uno de estos en detalle mientras vamos con un ejemplo. Pero primero, una acotación final. 
 
-TDD es una forma de auto disciplina —un life hack— no hace mágicamente a uno un mejor coder. En teoría, no hay razón por la que un gran coder no escriba exactamente el mismo código que alguien que no lo es. Pero la realidad es que la disciplina de TDD te alienta a :
+TDD es una forma de auto disciplina —un life hack— no te hace mágicamente un@ mejor coder. En teoría, no hay razón por la que un gran coder no escriba exactamente el mismo código que alguien que no lo es. Pero la realidad es que la disciplina de TDD te alienta a :
 
 1. Escribir tests; y
 2. Escribir pequeñas unidades de código que son fáciles de entender.
 
-Personalmente , encuentro que no estoy practicando TDD, apenas si escribo algún test, y las funciones que escribo son largas y muy complocadas. Eso no quiere decir que no estoy testeando —Estoy clickeand en el botón de refresh en mi navegador todo el tiempo—pero mis test no sirven para nada más que para mí. 
+Personalmente , encuentro que no estoy practicando TDD, apenas si escribo algún test, y las funciones que escribo son largas y muy complicadas. Eso no quiere decir que no estoy testeando —Estoy clickeando en el botón de refresh en mi navegador todo el tiempo—pero mis test no sirven para nada más que para mí. 
 
 ### Un ejemplo trabajado
-Tomemos un típico ejemplo en JavaScript para hacer en este ejemplo: Obtener data de un servidor (en este caso, una lista de fotos de Flickr.com), tranformarlo en HTML, y agregarlo a una página web. Puedes [ver el resultado final en este  CodePen](http://codepen.io/jrsinclair/pen/EKQmwo). 
+Tomemos un ejemplo típico en JavaScript para hacer en este ejemplo: Obtener data de un servidor (en este caso, una lista de fotos de Flickr.com), tranformarlo en HTML, y agregarlo a una página web. Puedes [ver el resultado final en este  CodePen](http://codepen.io/jrsinclair/pen/EKQmwo). 
 
-Para este ejemplo, usaremos el framework [Mocha](http://mochajs.org/). He escogido Mocha, no porque sea el más popular framework de testing en JavaScript (aunque lo es); no porque sea mejor que otros frameworks de pruebas ([que no lo es](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4#.bb72m9mmf)); pero por la simple razón que tengo la opción de agregar `--reporter=nyan` en lína de comandos, lo que hace que mis reporte de pruebas tengan un gato arcoiris volar por el espacio. Y eso lo hace [más divertido](http://jrsinclair.com/articles/2016/tdd-should-be-fun):
+Para este ejemplo, usaremos el framework [Mocha](http://mochajs.org/). He escogido Mocha, no porque sea el framework más popular de testing en JavaScript (aunque lo es); no porque sea mejor que otros frameworks de pruebas ([que no lo es](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4#.bb72m9mmf)); mas bien por la simple razón que tengo la opción de agregar `--reporter=nyan` en línea de comandos, lo que hace que mis reporte de pruebas tengan un gato arcoiris volar por el espacio (nyan cat). Y eso lo hace [más divertido](http://jrsinclair.com/articles/2016/tdd-should-be-fun):
 
 ```
 mocha --reporter=nyan
@@ -57,9 +57,9 @@ mocha --reporter=nyan
 
 ### Configurando
 
-Para este tutorial, correremos nuestros test en lína de comandos usando Node. Ahora puedes estar pensando, '¿no estamos escribiendo una aplicación web que correrá enteramente en el browser?'. Pero correr nuestros tests en Node es mucho más rápido, y las diferencias entre el browser y Node nos ayudarán a pensar con cuidado la estructura de nuestro código (más de esto más luego).
+Para este tutorial, correremos nuestros test en lína de comandos usando Node. Ahora puedes estar pensando, '¿no estamos escribiendo una aplicación web que correrá enteramente en el browser?'. Pero correr nuestros tests en Node es mucho más rápido, y las diferencias entre el browser y Node nos ayudarán a pensar con cuidado la estructura de nuestro código (más de esto más adelante).
 
-Para comenzar, necesitaremos Node installadol, además de Mocha y otro módulo llamado Chai. Si estás usando OS X, enteonces te recomiendo usar Homebrew para instalar Node, así es más fácil tenerlo actualizado. Una vez que tienes Homebrew configurado, puedes intalar Node con la línea de comandos que sigue: 
+Para comenzar, necesitaremos Node installado, además de Mocha y otro módulo llamado Chai. Si estás usando OS X, entonces te recomiendo usar Homebrew para instalar Node, así es más fácil tenerlo actualizado. Una vez que tienes Homebrew configurado, puedes intalar Node con la línea de comandos que sigue: 
 
 ```
 $ brew install node
@@ -68,7 +68,7 @@ Si estás en Linux, entonces puedes usar tu package manager del sistema(como `ap
 
 Y si estas usando Windows, entonces te recomiendo visitar la página de Node, y descargar el instalador. 
 
-Una vez que tienes Node instalado, podemos usar el manejador de paquetes de Node (npm) para instalar Mocha y Chai para nosotros. Asegurate de cambiar al directoria donde vas a escribir tu código y correr los siguientes comandos 
+Una vez que tienes Node instalado, podemos usar el manejador de paquetes de Node (npm) para instalar Mocha y Chai para nosotros. Asegúrate de cambiar al directorio donde vas a escribir tu código y correr los siguientes comandos 
 
 ```
 cd /path/donde/escribiré/mi/código
@@ -78,7 +78,7 @@ npm install chai
 
 Ahora que tenemos los prerequisitos instalados, podemos empezar a pensar sobre la aplicación que queremos construir. 
 
-### PENSANDO
+### Pensando
 
 Bueno, mientras decíamos hace un momento que sólo hay 3 pasos para TDD, no es enteramente verdad. Hay un paso cero. Tienes que pensar primero, luego escribir el test. Para ponerlo de otra manera: antes de escribir un test tienes que tener al menos una idea de que quieres alcanzar y como estructurás tu código. Es test drive _development_, no test drive _design_. 
 
@@ -97,16 +97,16 @@ A continuación necesitamos pensar sobre la estructura del código. _Podría_ po
 
 Como es probable que use jQuery para hacer los request HTTP  al servidr, parece (a este punto, al menos) que el acercamiento más simple sería usar jQuery para manipular el DOM. Pero, en el futuro puedo cambiar de parecer y usar un componente de React. Así que tiene sentido manter la parte de la aplicación de obtener-y-tranformar un poco separado de la parte hacer-HTML-y-agregar-a-DOM. 
 
-Con esto en mente, crearé cuatro archivo para darle hogar a mi código. 
+Con esto en mente, crearé cuatro archivos para albergar mi código. 
 
-1. `flickr-fetcher.js` para el módigo que obtiene la data y la transforma;
+1. `flickr-fetcher.js` para el módilo que obtiene la data y la transforma;
 2. `photo-lister.js` para el módulo que toma la lista, la convierte en HTML y agrega a la página. 
 3. `flickr-fetcher-spec.js` para el código que probará `flickr-fetcher.js`; y 
 4. `photo-lister-spec.js` para el código que probará `photo-lister.js`. 
 
 ### Escribiendo las pruebas
 
-Con los archivos en su lugar puedo comenzar a pensar en escribir mi *primer test*. Ahora, quiero escribir el test más simple posible que igual movera mi código base hacia adelante. Algo útil de hacer a este punto es probar que puedo cargar el módiglo. En `flickr-fetcher-spec.js` escribo: 
+Con los archivos en su lugar puedo comenzar a pensar en escribir mi *primer test*. Ahora, quiero escribir el test más simple posible que igual movera mi código base hacia adelante. Algo útil de hacer a este punto es probar que puedo cargar el módulo. En `flickr-fetcher-spec.js` escribo: 
 
 ```JavaScript
 // flickr-fetcher-spec.js
@@ -121,7 +121,7 @@ describe('FlickrFetcher', function() {
 });
 ```
 
-Hay algunas cosas que notar aquí. Primero que todo, porque todo los tests corren usando Node, significa que importamos los módulos al estilo de node `require()`. 
+Hay algunas cosas que notar aquí. Primero que todo, porque todo los tests corren usando Node, significa que importamos los módulos al estilo de node usando `require()`. 
 
 La otra cosa que notar es que estamos usando el estilo 'Behaviour Driven Development' (BDD) para escribir los tests. Esta es una variación de TDD donde los test son escritos de la forma: _Describe [**algo**]. Eso debería [**hacer algo**]._ Entonces [_algo_] puede ser un módulo, o una clase, o un método, o una función. Mocha incluye una función de `describe()` y `it()` con lo que podemos escribir en este estilo. 
 
@@ -138,18 +138,18 @@ Si todo esta instalado correctamente, podemos ver a un gato feliz como el que se
 ![One passing test][happy-nyan-cat]
 _Un test pasó_
 
-Nuestro test pasa, lo cual parece raro dado que no escrito ningún código del módulo. Esto es porque mi archivo `flickr-fetcher.js` existe (y Node te da un objeto vacío si requires o hacer `require` a un archivo en blanco). Cómo no tengo ningún test fallido, aunque no he escrito ningún código del módilo. La regla es: No se escribe código del módulo hasta que haya un test con errores. Así que, ¿ahora que hago? Escribo otro test -lo que significa _pensar_ de nuevo. 
+Nuestro test pasa, lo cual parece raro dado que no he escrito ningún código del módulo. Esto es porque mi archivo `flickr-fetcher.js` existe (y Node te da un objeto vacío si requires o hacer `require` a un archivo en blanco). Cómo no tengo ningún test fallido, aunque no he escrito ningún código del módulo. La regla es: No se escribe código del módulo hasta que haya un test con errores. Así que, ¿ahora que hago? Escribo otro test -lo que significa _pensar_ de nuevo. 
 
 Hayd dos cosas que quiero lograr: 
 
 1. Obtener data de Flickr, y 
 2. Transformar la data. 
 
-Obtener la data de Flickr envuelve hacer una conexión de red, aunque, como un buen programador funciona, 
-[voya poner eso a parte para después](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-intro/#fn:4) <a name="reference-4"></a>[[4]](#footnote-4). En su lugar, enfonquemonos en la transformación de la data. 
+Obtener la data de Flickr envuelve hacer una conexión de red, aunque, como un buen programador funcional, 
+[voy a dejar esto para después](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-intro/#fn:4) <a name="reference-4"></a>[[4]](#footnote-4). En su lugar, enfonquemonos en la transformación de la data. 
 
 
-Quiero tomar cada uno de los objetos foto que Flickr da y transformarlo en un objeto que solo tiene la información que quiero - en este caso, el título y el url de la imagen. El URL tiene un truco aunque porque le API de Flickr no retorna los URL completamente formados. En su lugar, tengo que [construir el URL en base al tamaño de la foto que quiero](https://www.flickr.com/services/api/misc.urls.html). Ahora, este parece un buen lugar para comenzar con el siguiente test:  Algo pequeño, testeable, que permite avanzar con el código base. Ahora puedo escribir el test. 
+Quiero tomar cada uno de los objetos foto que Flickr da y transformarlo en un objeto que solo tiene la información que quiero - en este caso, el título y el url de la imagen. El URL tiene un truco, aunque porque le API de Flickr no retorna los URL completamente formados. En su lugar, tengo que [construir el URL en base al tamaño de la foto que quiero](https://www.flickr.com/services/api/misc.urls.html). Ahora, este parece un buen lugar para comenzar con el siguiente test:  Algo pequeño, testeable, que permite avanzar con el código base. Ahora puedo escribir el test. 
 
 ```JavaScript
 // flickr-fetcher-spec.js
@@ -175,9 +175,9 @@ describe('#photoObjToURL()', function() {
 }); 
 
 ```
-Nota que he usado `expect(actual).to.eql(expected);` en lugar de `expect(actual).to.equal(expected);`. Esto le dice a Chai que verifique cada value dentro de `expected`. La regla del dedo gordo es, usa `equal` cuando comparas numbers, strings o booleans, y usa `eql` cuando comparan arreglos u objetos. 
+Nota que he usado `expect(actual).to.eql(expected);` en lugar de `expect(actual).to.equal(expected);`. Esto le dice a Chai que verifique cada value dentro de `expected`. La regla aquí es, usa `equal` cuando comparas numbers, strings o booleans, y usa `eql` cuando comparan arreglos u objetos. 
 
-Así que corro el test de nuevo y...gato triste. Tengo un error. Eso significa que puede escribir un poco de código. Paso uno es simplemente obtener la estructura del módulo en su lugar: 
+Así que corro el test de nuevo y...gato triste. Tengo un error. Eso significa que puedo escribir un poco de código. Paso uno es simplemente obtener la estructura del módulo en su lugar: 
 
 ```JavaScript
 // flickr-fetcher.js
@@ -244,7 +244,7 @@ describe('#photoObjToURL()', function() {
 ```
 Corre el test, y falla -gato triste. 
 
-Ahora que tenemos un nuevo test, la pregunta es, ¿Cuál es el código más simple que puedo escribir para pasar este test? Cod dos tests la respuesta no es tan simple. Yo _podría_ escribir un statement if y retornar el segundo URL, pero es casi el mismo esfuerzo que escribir un código general, así que haré eso: 
+Ahora que tenemos un nuevo test, la pregunta es, ¿Cuál es el código más simple que puedo escribir para pasar este test? Con dos tests la respuesta no es tan simple. Yo _podría_ escribir un statement if y retornar el segundo URL, pero es casi el mismo esfuerzo que escribir un código más general, así que haré eso: 
 
 ```JavaScript 
 // flickr-fetcher.js
@@ -258,7 +258,7 @@ FlickrFetcher = {
 
 Corremos los tests de nuevo -gato faliz. Tengo una función funcionando. 
 
-Estamos de regreso al paso de refactor. Ahora, este código es aún bastante simple, pero todos esos signos de suma lucen un poco feos para mi. Una manera de no tenerlos es usar una librería de templating (como Handlbars o [algo más simple](http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), pero no parece agregar valor el código extra a esta función. Podría intetar otra cosa. Si pongo todas las partes de la cadena en un arreglo, puedo pegar todo con el método `join()`. Como valor agregado, la mayoría de implementaciones de JavaScript correran el join siempre un poco más rápido que la concatenación con +. Así que refactorizo usando `join()`:
+Estamos de regreso al paso de refactor. Ahora, este código es aún bastante simple, pero todos esos signos de suma lucen un poco feos para mí. Una manera de no tenerlos es usar una librería de templating (como Handlbars o [algo más simple](http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), pero no parece agregar valor el código extra a esta función. Podría intentar otra cosa. Si pongo todas las partes de la cadena en un arreglo, puedo pegar todo con el método `join()`. Como valor agregado, la mayoría de implementaciones de JavaScript correran el join siempre un poco más rápido que la concatenación con +. Así que refactorizo usando `join()`:
 
 ```JavaScript 
 FlickrFetcher = {
@@ -277,10 +277,10 @@ Corro el test nuevamente, y mi test pasará, así sé que todo funciona. Momento
 
 A este punto, si quiero escribir un módulo para ser publicado en [npm](https://www.npmjs.com/), escribiría los test para cubrir las cosas más locas que alguien podría intentar pasar a la función. Por ejemplo: 
 
-- ¿Qué pasaría si alguine pasa un string en vez de un objeto?
+- ¿Qué pasaría si alguien pasa un string en vez de un objeto?
 - ¿Qué debería pasar si alguien no pasa parámetros?
-- ¿Qué debería pasar si alguien pasa un objeto con los nombres d elas propuedades errados?
-- ¿Qué debería pasar si alguien pasa un objeto con los nombres de propiedades correctos pero los valores no los strings?
+- ¿Qué debería pasar si alguien pasa un objeto con los nombres de las propiedades errados?
+- ¿Qué debería pasar si alguien pasa un objeto con los nombres de propiedades correctos pero los valores no son strings?
 
 Todas estas son buenas preguntas que hacernos, y probar, pero no iré por ese camino aquí: Primero que nada porque sería increíblemente aburrido de leer, y segundo porque este es un proyecto de juego que no es una misión crítica para nada. No estaré perdiendo el dinero de alguien o poniendo en riesgo la vida de alguien si este código no maneja los caso extremos con gracia. Por ahora, sé que hace lo que quiero que haga. Sin embargo, si estuviera escribiendo código de software de soporte vital o manejando los detalles de las tarjetas de crédito, o algo remotamente como eso, entonces definitivamente queremos responder todas esas preguntas. 
 
@@ -331,7 +331,7 @@ Vuelvo a correr los test, y es gato es feliz de nuevo (_verde_).
 ![3 tests que pasaron y un nyan cat feliz][happy-nyan-cat-3]
 3 tests que pasaron y un nyan cat feliz
 
-¿Puedo refactorizar este código? ¿O tódo mi código? A este punto probablemente no. Pero, este código no es terriblemente útil, ya que sólo puedo manejar un input espcífico, así que necesito escribir otro test: 
+¿Puedo refactorizar este código? ¿O tódo mi código? A este punto probablemente no. Pero, este código no es muy útil, ya que sólo puedo manejar un input específico, así que necesito escribir otro test: 
 
 ```JavaScript
 describe('#transformPhotoObj()', function() {
@@ -377,7 +377,7 @@ describe('#transformPhotoObj()', function() {
 
 ![Los test fallan y nuestro gato esta triste.][sad-nyan-cat-4]
 
-Ahora, la más simple, y facíl de hacer los test pasar ahora es escribir una función completa, asegurándOnos de usar la función `photoObjtO-URL()`.
+Ahora, la más simple, y fácil de hacer los test pasar ahora es escribir una función completa, asegurándonos de usar la función `photoObjtO-URL()`.
 
 ```JavaScript
 // flickr-fetcher.js
@@ -413,7 +413,7 @@ Por ahora debe tener una sensación de los pasos básicos de TDD: Rojo, verde y 
 
  <a name="footnote-3"></a>
  
- 3. And let’s face it, if you’re using Linux and reading this article, you probably have Node installed already.[↩](#reference-3)
+ 3. Y aceptemoslo, so estas usando Linux y leyendo este artículo, probablemente ya tienes Node instalado.[↩](#reference-3)
 
  <a name="footnote-4"></a>
 
@@ -429,4 +429,4 @@ Por ahora debe tener una sensación de los pasos básicos de TDD: Rojo, verde y 
 
 [happy-nyan-cat-5]:http://jrsinclair.com/assets/3-passing-tests.png
 
-_Disclaimer: This is a translation from the original article of James Sinclair, A gentle introdución to JavaScript Test Driven Development. I don't own this article. It is property of their corresponding authors._
+_Disclaimer: This is a translation from the original article of James Sinclair, A gentle introduction to JavaScript Test Driven Development. I don't own this article. It is property of their corresponding authors._

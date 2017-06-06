@@ -8,9 +8,9 @@ Si encuentras horrores ortográficos, o algún problema con la traducción, eres
 
 Consta de 3 Partes: 
 
-1. Comenzando con unit tests
-2. Trabajando con network request en TDD
-3. Trabajando con DOM en TDD
+1. [Comenzando con unit tests](/part-1-Comenzando-con-pruebas-unitarias)
+2. [Trabajando con network request en TDD](/part-2-Trabajando-peticiones-asincronas-tdd)
+3. Trabajando con DOM en TDD (WIP)
 
 
 - @lizzie136

@@ -5,9 +5,9 @@ _Este artículo originalmente fue publicado en Inglés por James Sinclair el 11 
 
 Esta es la parte uno de una serie de tres partes donde explico en términos generales mi acercamiento personal a Desarrollo Impulsado o dirigido por Pruebas (_Test driven development_ o TDD). Sobre el curso de esta serie, trabajaré el desarrollo de una aplicación completa (aunque una pequeña, simple) en JavaScript que involucra hacer peticiones de red (también conocidas como AJAX) y manipulación de DOM. Las varias partes son las que siguen: 
 
-* Parte 1: Comenzando con pruebas unitarias. 
-* Parte 2: Trabajando con peticiones de red en TDD.
-* Parte 3: Trabajando con DOM en TDD.
+1. [Comenzando con unit tests](/part-1-Comenzando-con-pruebas-unitarias)
+2. [Trabajando con network request en TDD](/part-2-Trabajando-peticiones-asincronas-tdd)
+3. Trabajando con DOM en TDD (WIP)
 
 ## ¿Por qué Test Driven Development?
 Comenzar con desarrollo dirigido por pruebas (TDD) puede ser intimidante. Suena tedioso, aburrido y complicado. La palabra 'prueba' llama a pensar en exámenes y estrés y vigilantes y todo tipo de molestias. Y puede parecer un desperdicio escribir código que no _hace_ nada útil más all de decirte que el código que ya escribiste está funcionando. Y encima de todo, hay un confusa colección de frameworks y librerías ahí fuera. Algunas trabajan en el servidor, otras trabajan en el navegador, otras hacen las dos cosas... puede ser duro el sólo saber por donde empezar.
@@ -398,7 +398,7 @@ Tres test que pasaron y un gato feliz.
 Lo siguiente es refactorizar. ¿Esta función se puede mejorar? A este nivel, probablemente no. Pero es importante seguir preguntándonos esa pregunta cada vez. Refactorizar es una de las delicias de programar y debes saborearlo siempre que sea posible. 
 
 Por ahora debe tener una sensación de los pasos básicos de TDD: Rojo, verde y refactor. En este artículo hemos visto como es importante pensar antes de escribir un test -TDD no es un reemplazo de un buen diseño de software. En los siguientes dos artículos examinaremos 
-[cómo manejar llamadas asíncronas en red](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-ajax) y [cómo testear código que manipula el DOM sin un navegador](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-html-dom).
+[cómo manejar llamadas asíncronas en red](/part-2-Trabajando-peticiones-asincronas-tdd) y [cómo testear código que manipula el DOM sin un navegador](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-html-dom).
 
 ***
 

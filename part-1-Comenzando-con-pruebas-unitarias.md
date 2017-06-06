@@ -5,8 +5,8 @@ _Este artículo originalmente fue publicado en Inglés por James Sinclair el 11 
 
 Esta es la parte uno de una serie de tres partes donde explico en términos generales mi acercamiento personal a Desarrollo Impulsado o dirigido por Pruebas (_Test driven development_ o TDD). Sobre el curso de esta serie, trabajaré el desarrollo de una aplicación completa (aunque una pequeña, simple) en JavaScript que involucra hacer peticiones de red (también conocidas como AJAX) y manipulación de DOM. Las varias partes son las que siguen: 
 
-1. [Comenzando con unit tests](/part-1-Comenzando-con-pruebas-unitarias)
-2. [Trabajando con network request en TDD](/part-2-Trabajando-peticiones-asincronas-tdd)
+1. [Comenzando con unit tests](/tdd-js-spanish/part-1-Comenzando-con-pruebas-unitarias)
+2. [Trabajando con network request en TDD](/tdd-js-spanish/part-2-Trabajando-peticiones-asincronas-tdd)
 3. Trabajando con DOM en TDD (WIP)
 
 ## ¿Por qué Test Driven Development?

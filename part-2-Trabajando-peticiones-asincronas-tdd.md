@@ -3,8 +3,8 @@
 Esta es la parte 2 de una serie de tres partes introduciendo mi acercamiento personal a JavaScript TDD. En el artículo anterior comenzamos creando una pequeña aplicación que carga data de imágenes del API de Flickr y mostrarlos en una página web. Comenzamos por configurar los módulos y escribir unos simples unit test usando el framework Mocha. En este artículo veremos como probar llamadas asíncronas de red (también llamadas AJAX). 
 
 
-1. [Comenzando con unit tests](/part-1-Comenzando-con-pruebas-unitarias)
-2. [Trabajando con network request en TDD](/part-2-Trabajando-peticiones-asincronas-tdd)
+1. [Comenzando con unit tests](/tdd-js-spanish/part-1-Comenzando-con-pruebas-unitarias)
+2. [Trabajando con network request en TDD](/tdd-js-spanish/part-2-Trabajando-peticiones-asincronas-tdd)
 3. Trabajando con DOM en TDD (WIP)
 
 

@@ -398,7 +398,7 @@ Tres test que pasaron y un gato feliz.
 Lo siguiente es refactorizar. ¿Esta función se puede mejorar? A este nivel, probablemente no. Pero es importante seguir preguntándonos esa pregunta cada vez. Refactorizar es una de las delicias de programar y debes saborearlo siempre que sea posible. 
 
 Por ahora debe tener una sensación de los pasos básicos de TDD: Rojo, verde y refactor. En este artículo hemos visto como es importante pensar antes de escribir un test -TDD no es un reemplazo de un buen diseño de software. En los siguientes dos artículos examinaremos 
-[cómo manejar llamadas asíncronas en red](/part-2-Trabajando-peticiones-asincronas-tdd) y [cómo testear código que manipula el DOM sin un navegador](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-html-dom).
+[cómo manejar llamadas asíncronas en red](/tdd-js-spanish/part-2-Trabajando-peticiones-asincronas-tdd) y [cómo testear código que manipula el DOM sin un navegador](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-html-dom).
 
 ***
 

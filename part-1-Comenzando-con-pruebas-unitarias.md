@@ -1,4 +1,4 @@
-# Un introducción gentil a Test Driven Development en JavaScript: PARTE I
+# Un introducción gentil a Test Driven Development en JavaScript: PARTE 1
 
 
 _Este artículo originalmente fue publicado en Inglés por James Sinclair el 11 de Abril del 2016_

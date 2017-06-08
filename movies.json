@@ -1,0 +1,51 @@
+[
+    {
+        "title": "SPLICE",
+        "rating": "3",
+        "description": "This is splice, i would do a lorem ipsum, but that's creppy.",
+        "image-url":"https://c1.staticflickr.com/6/5052/5519592664_3945ac8a2f_q.jpg",
+        "price":"10.00"
+    },
+    {
+        "title": "Rango",
+        "rating": "3.5",
+        "description": "They had everything to be good, something happen. Jonny Depp was good.",
+        "image-url":"https://c1.staticflickr.com/6/5214/5519590744_86beeb379e_q.jpg",
+        "price":"15.00"
+    },
+    {
+        "title": "Slumdog Billionaire",
+        "rating": "5",
+        "description": "They were great, i really wanted the guy to win the money",
+        "image-url":"https://c1.staticflickr.com/6/5058/5519592778_c7591a7765_q.jpg",
+        "price":"20.00"
+    },
+    {
+        "title": "Red Riding Hood",
+        "rating": "3.5",
+        "description": "You knew this was dark, but you still saw it.",
+        "image-url":"https://c1.staticflickr.com/6/5178/5518996151_fe03477ea4_q.jpg",
+        "price":"14.00"
+    },
+    {
+        "title": "Rite",
+        "rating": "4.5",
+        "description": "This actually gave me the chills. Awesome at scare you.",
+        "image-url":"https://c1.staticflickr.com/6/5215/5519587348_41cdfa2d14_q.jpg",
+        "price":"15.00"
+    },
+    {
+        "title": "Mars needs moms",
+        "rating": "3.5",
+        "description": "Well, sometimes things happen",
+        "image-url":"https://c1.staticflickr.com/6/5020/5519589784_e2337c6ac9_q.jpg",
+        "price":"5.00"
+    },
+    {
+        "title": "Cowboys vs Aliens",
+        "rating": "4",
+        "description": "Funny, i like cowboys movies and science fiction. Why not both?",
+        "image-url":"https://c1.staticflickr.com/6/5140/5519587502_7cdc506e52_q.jpg",
+        "price":"12.00"
+    }
+]

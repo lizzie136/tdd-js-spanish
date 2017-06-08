@@ -7,7 +7,7 @@ Esta es la parte uno de una serie de tres partes donde explico en términos gene
 
 1. [Comenzando con unit tests](/tdd-js-spanish/part-1-Comenzando-con-pruebas-unitarias)
 2. [Trabajando con network request en TDD](/tdd-js-spanish/part-2-Trabajando-peticiones-asincronas-tdd)
-3. Trabajando con DOM en TDD (WIP)
+3. [Trabajando con DOM en TDD](/tdd-js-spanish/part-3-Trabajando-DOM-en-TDD)
 
 ## ¿Por qué Test Driven Development?
 Comenzar con desarrollo dirigido por pruebas (TDD) puede ser intimidante. Suena tedioso, aburrido y complicado. La palabra 'prueba' llama a pensar en exámenes y estrés y vigilantes y todo tipo de molestias. Y puede parecer un desperdicio escribir código que no _hace_ nada útil más all de decirte que el código que ya escribiste está funcionando. Y encima de todo, hay un confusa colección de frameworks y librerías ahí fuera. Algunas trabajan en el servidor, otras trabajan en el navegador, otras hacen las dos cosas... puede ser duro el sólo saber por donde empezar.
@@ -398,7 +398,7 @@ Tres test que pasaron y un gato feliz.
 Lo siguiente es refactorizar. ¿Esta función se puede mejorar? A este nivel, probablemente no. Pero es importante seguir preguntándonos esa pregunta cada vez. Refactorizar es una de las delicias de programar y debes saborearlo siempre que sea posible. 
 
 Por ahora debe tener una sensación de los pasos básicos de TDD: Rojo, verde y refactor. En este artículo hemos visto como es importante pensar antes de escribir un test -TDD no es un reemplazo de un buen diseño de software. En los siguientes dos artículos examinaremos 
-[cómo manejar llamadas asíncronas en red](/tdd-js-spanish/part-2-Trabajando-peticiones-asincronas-tdd) y [cómo testear código que manipula el DOM sin un navegador](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-html-dom).
+[cómo manejar llamadas asíncronas en red](/tdd-js-spanish/part-2-Trabajando-peticiones-asincronas-tdd) y [cómo testear código que manipula el DOM sin un navegador](/tdd-js-spanish/part-3-Trabajando-DOM-en-TDD).
 
 ***
 

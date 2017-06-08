@@ -5,7 +5,7 @@ Esta es la parte 2 de una serie de tres partes introduciendo mi acercamiento per
 
 1. [Comenzando con unit tests](/tdd-js-spanish/part-1-Comenzando-con-pruebas-unitarias)
 2. [Trabajando con network request en TDD](/tdd-js-spanish/part-2-Trabajando-peticiones-asincronas-tdd)
-3. Trabajando con DOM en TDD (WIP)
+3. [Trabajando con DOM en TDD]((/tdd-js-spanish/part-3-Trabajando-DOM-en-TDD)
 
 
 ## Probando llamadas de red asíncronas (AJAX)
@@ -268,7 +268,7 @@ fetchPhotos: function(apiKey, fetch) {
 ```
 Corremos los test nuevamente, mis tests pasan - gato feliz (_verde_). Así que es momento de refactorizar. Pero, desde que la función es solo tres o cuatro (dependiendo de cómo cuentes) llamadas, no hay mucho que refactorizar. <a name="reference-2"></a>[[2]](#footnote-2) Así que por el momento, he completado mi primer módulo. 
 
-¿Qué hemos cubierto? En este artículo hemos cubierto dos tópicos principales: Probar código asíncrono y usar stubs para estandarizar cosas como las llamadas a red. En el siguiente artículos nos enfocaremos en _[trabar con HTML y el DOM](http://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-html-dom)_
+¿Qué hemos cubierto? En este artículo hemos cubierto dos tópicos principales: Probar código asíncrono y usar stubs para estandarizar cosas como las llamadas a red. En el siguiente artículo nos enfocaremos en _[trabajar con HTML y el DOM](/tdd-js-spanish/part-3-Trabajando-DOM-en-TDD)_
 
 
 

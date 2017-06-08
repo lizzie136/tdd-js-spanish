@@ -242,7 +242,7 @@ if ((typeof module !== 'undefined') && (typeof module.exports !== 'undefined')) 
 
 Corro mis tests una vez más, uso el siguiente código:
 
-````
+```
 $ mocha --reporter=nyan ./*-spec.js
 ```
 
